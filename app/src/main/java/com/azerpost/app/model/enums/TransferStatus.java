@@ -1,4 +1,4 @@
-package com.azerpost.app.model;
+package com.azerpost.app.model.enums;
 
 public enum TransferStatus {
     NEW,

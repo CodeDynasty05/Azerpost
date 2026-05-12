@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipment Update</title>
+</head>
+<body style="margin:0;padding:0;background-color:#f4f6f8;font-family:Arial,Helvetica,sans-serif;color:#1f2933;">
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background-color:#f4f6f8;margin:0;padding:24px 0;">
+    <tr>
+        <td align="center" style="padding:0 16px;">
+            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:640px;background-color:#ffffff;border:1px solid #e1e7ef;border-radius:8px;overflow:hidden;">
+                <tr>
+                    <td style="background-color:#d71920;padding:24px 28px;">
+                        <h1 style="margin:0;color:#ffffff;font-size:24px;line-height:32px;font-weight:700;">Shipment update</h1>
+                        <p style="margin:8px 0 0;color:#ffe7e8;font-size:14px;line-height:20px;">Tracking number: <strong th:text="${trackingNumber}">123456</strong></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:28px;">
+                        <p style="margin:0 0 16px;font-size:16px;line-height:24px;">Hello <strong th:text="${username}">customer</strong>,</p>
+                        <p style="margin:0 0 24px;font-size:15px;line-height:23px;color:#52606d;">
+                            Your shipment status has been updated. The latest details are below.
+                        </p>
+
+                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;margin:0 0 24px;">
+                            <tr>
+                                <td style="padding:14px 16px;background-color:#f8fafc;border:1px solid #e1e7ef;border-radius:8px;">
+                                    <p style="margin:0 0 6px;font-size:12px;line-height:18px;color:#7b8794;text-transform:uppercase;">Current status</p>
+                                    <p style="margin:0;font-size:20px;line-height:28px;color:#111827;font-weight:700;" th:text="${status}">IN TRANSIT</p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;">
+                            <tr>
+                                <td style="padding:12px 0;border-bottom:1px solid #edf1f5;color:#7b8794;font-size:14px;">Receiver</td>
+                                <td align="right" style="padding:12px 0;border-bottom:1px solid #edf1f5;color:#1f2933;font-size:14px;font-weight:600;" th:text="${receiverName}">Receiver Name</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:12px 0;border-bottom:1px solid #edf1f5;color:#7b8794;font-size:14px;">Shipment type</td>
+                                <td align="right" style="padding:12px 0;border-bottom:1px solid #edf1f5;color:#1f2933;font-size:14px;font-weight:600;" th:text="${shipmentType}">STANDARD</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:12px 0;border-bottom:1px solid #edf1f5;color:#7b8794;font-size:14px;">Expected delivery</td>
+                                <td align="right" style="padding:12px 0;border-bottom:1px solid #edf1f5;color:#1f2933;font-size:14px;font-weight:600;" th:text="${deliveryDate}">Not scheduled</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:12px 0;border-bottom:1px solid #edf1f5;color:#7b8794;font-size:14px;">Destination</td>
+                                <td align="right" style="padding:12px 0;border-bottom:1px solid #edf1f5;color:#1f2933;font-size:14px;font-weight:600;" th:text="${destination}">Destination</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:12px 0;color:#7b8794;font-size:14px;">Updated at</td>
+                                <td align="right" style="padding:12px 0;color:#1f2933;font-size:14px;font-weight:600;" th:text="${updatedAt}">29 Apr 2026 15:30</td>
+                            </tr>
+                        </table>
+
+                        <div th:if="${description != null and !#strings.isEmpty(description)}" style="margin-top:24px;padding:16px;background-color:#f8fafc;border-left:4px solid #d71920;">
+                            <p style="margin:0 0 6px;font-size:12px;line-height:18px;color:#7b8794;text-transform:uppercase;">Description</p>
+                            <p style="margin:0;font-size:14px;line-height:22px;color:#1f2933;" th:text="${description}">Shipment description</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding:18px 28px;background-color:#f8fafc;border-top:1px solid #e1e7ef;">
+                        <p style="margin:0;color:#7b8794;font-size:12px;line-height:18px;">
+                            This is an automated message from Azerpost. Please do not reply to this email.
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

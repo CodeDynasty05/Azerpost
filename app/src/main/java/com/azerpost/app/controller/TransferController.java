@@ -1,6 +1,7 @@
 package com.azerpost.app.controller;
 
-import com.azerpost.app.model.TransferResponse;
+import com.azerpost.app.model.dto.ProofOfDeliveryAddRequest;
+import com.azerpost.app.model.enums.TransferStatus;
 import com.azerpost.app.service.TransferService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -19,8 +20,8 @@ public class TransferController {
     private final TransferService transferService;
 
     @GetMapping
-    public Page<TransferResponse> getTransfers(
-            @RequestParam(required = false) String status,
+    public Page<ProofOfDeliveryAddRequest.TransferResponse> getTransfers(
+            @RequestParam(required = false) TransferStatus status,
             Pageable pageable
     ) {
         return transferService.getTransfers(status, pageable);

@@ -1,8 +1,8 @@
 package com.azerpost.app.service.impl;
 
-import com.azerpost.app.model.Transfer;
-import com.azerpost.app.model.TransferResponse;
-import com.azerpost.app.model.TransferStatus;
+import com.azerpost.app.model.entity.Transfer;
+import com.azerpost.app.model.enums.TransferStatus;
+import com.azerpost.app.model.dto.ProofOfDeliveryAddRequest;
 import com.azerpost.app.repository.TransferRepository;
 import com.azerpost.app.service.TransferService;
 import lombok.RequiredArgsConstructor;
@@ -17,23 +17,13 @@ public class TransferServiceImpl implements TransferService {
     private final TransferRepository transferRepository;
 
     @Override
-    public Page<TransferResponse> getTransfers(String status, Pageable pageable) {
-
-        TransferStatus transferStatus = null;
-
-        if (status != null && !status.isBlank()) {
-            try {
-                transferStatus = TransferStatus.valueOf(status.trim().toUpperCase());
-            } catch (IllegalArgumentException ex) {
-                throw new IllegalArgumentException("Invalid transfer status: " + status);
-            }
-        }
+    public Page<ProofOfDeliveryAddRequest.TransferResponse> getTransfers(TransferStatus status, Pageable pageable) {
 
         Page<Transfer> transfers;
 
-        if(transferStatus != null){
+        if(status != null){
             transfers = transferRepository.findByStatus(
-                   transferStatus,
+                   status,
                     pageable
             );
         } else {
@@ -43,8 +33,8 @@ public class TransferServiceImpl implements TransferService {
         return transfers.map(this::mapToResponse);
     }
 
-    private TransferResponse mapToResponse(Transfer transfer){
-        TransferResponse response = new TransferResponse();
+    private ProofOfDeliveryAddRequest.TransferResponse mapToResponse(Transfer transfer){
+        ProofOfDeliveryAddRequest.TransferResponse response = new ProofOfDeliveryAddRequest.TransferResponse();
 
         response.setId(transfer.getId());
         response.setReceiverName(transfer.getReceiverName());

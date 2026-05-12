@@ -1,5 +1,6 @@
-package com.azerpost.app.model;
+package com.azerpost.app.model.entity;
 
+import com.azerpost.app.model.enums.TransferStatus;
 import jakarta.persistence.*;
 import lombok.Data;
 

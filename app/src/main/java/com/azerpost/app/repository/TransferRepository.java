@@ -1,7 +1,7 @@
 package com.azerpost.app.repository;
 
-import com.azerpost.app.model.Transfer;
-import com.azerpost.app.model.TransferStatus;
+import com.azerpost.app.model.entity.Transfer;
+import com.azerpost.app.model.enums.TransferStatus;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
